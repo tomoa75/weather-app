@@ -6,6 +6,10 @@ export function useWeather() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [candidates, setCandidates] = useState([]);
+  const [daily, setDaily] = useState(null);
+  const [hourly, setHourly] = useState(null);
+
+  // 1. Cities
 
   const fetchCities = (city) => {
     if (!city.trim()) {
@@ -21,15 +25,20 @@ export function useWeather() {
         setLoading(true);
         setError("");
 
+        // 👇 simulacija loadinga
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
         const geoRes = await fetch(
           `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
             city,
           )}&count=4&language=en&format=json`,
         );
 
-        if (!geoRes.ok) throw new Error("Geo API greška");
+        if (!geoRes.ok) throw new Error("Geo API greška"); //geoResponse je objekt koji sadrži informacije o HTTP odgovoru, uključujući statusni kod i tijelo odgovora. Ako je statusni kod u rasponu 200-299, geoRes.ok će biti true, što znači da je zahtjev bio uspješan. Ako nije, bacit će se greška s porukom "Geo API greška".
 
         const geoData = await geoRes.json();
+        console.log("GeoData", geoData);
+        console.log("GeoData response", geoRes);
 
         setCandidates(geoData.results || []);
       } catch (err) {
@@ -52,6 +61,7 @@ export function useWeather() {
       );
 
       const weatherData = await weatherRes.json();
+      console.log("WeatherData", weatherData);
       //Podaci za dnevnu prognozu (ako su potrebni)
       console.log("test DAILY Max", weatherData.daily.temperature_2m_max);
       console.log("test DAILY Min", weatherData.daily.temperature_2m_min);
@@ -62,12 +72,25 @@ export function useWeather() {
 
       setWeather({
         city: name,
+        country: selected.country,
         temperature: weatherData.current.temperature_2m,
         feelsLike: weatherData.current.apparent_temperature,
         humidity: weatherData.current.relative_humidity_2m,
         precipitation: weatherData.current.precipitation,
         wind: weatherData.current.wind_speed_10m,
         weatherCode: weatherData.current.weathercode,
+      });
+
+      setDaily({
+        time: weatherData.daily.time,
+        temperature_2m_max: weatherData.daily.temperature_2m_max,
+        temperature_2m_min: weatherData.daily.temperature_2m_min,
+        weathercode: weatherData.daily.weathercode,
+      });
+      setHourly({
+        time: weatherData.hourly.time,
+        temperature_2m: weatherData.hourly.temperature_2m,
+        weathercode: weatherData.hourly.weathercode,
       });
 
       setCandidates([]);
@@ -81,6 +104,8 @@ export function useWeather() {
     weather,
     loading,
     error,
+    daily,
+    hourly,
     fetchCities,
     fetchWeather,
     candidates,

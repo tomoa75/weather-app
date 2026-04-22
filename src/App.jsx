@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import DropdownHeader from "./components/DropdownHeader";
 import MainDiv from "./components/MainDiv";
 import Error from "./components/Error";
+import DailyForecast from "./components/DailyForecast";
+import HourlyForecast from "./components/HourlyForecast";
 import "./App.css";
 const UNIT_PRESETS = {
   metric: {
@@ -49,12 +51,22 @@ function App() {
 
           <InputPlace {...weatherData} />
           <div className="main-container">
-            <MainDiv
-              weather={weatherData.weather}
-              loading={weatherData.loading}
-              error={weatherData.error}
-              units={units}
-            />
+            <div className="left-side">
+              <MainDiv
+                weather={weatherData.weather}
+                loading={weatherData.loading}
+                error={weatherData.error}
+                units={units}
+                country={weatherData.country}
+              />
+
+              <div className="daily-forecast">
+                <DailyForecast daily={weatherData.daily} units={units} />
+              </div>
+            </div>
+            <div className="hourly-forecast">
+              <HourlyForecast hourly={weatherData.hourly} units={units} />
+            </div>
           </div>
         </>
       )}
