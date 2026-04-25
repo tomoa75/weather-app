@@ -30,16 +30,14 @@ export default function MainDiv({ weather, loading, error, units }) {
                 src={getWeatherIcon(weather.weatherCode)}
                 alt="Weather Icon"
               />
-              <span>
-                {units.temperature === "Celsius"
-                  ? Math.round(weather.temperature)
-                  : Math.round((weather.temperature * 9) / 5 + 32)}
-                °
-              </span>
+              {units.temperature === "Celsius"
+                ? Math.round(weather.temperature)
+                : Math.round((weather.temperature * 9) / 5 + 32)}
+              °
             </div>
           </div>
           <div className="details">
-            <div className="feels-like">
+            <div className="details-item">
               <p>Feels Like</p>
               <span>
                 {units.temperature === "Celsius"
@@ -48,11 +46,11 @@ export default function MainDiv({ weather, loading, error, units }) {
                 {units.temperature === "Celsius" ? "°C" : "°F"}
               </span>
             </div>
-            <div className="humidity">
+            <div className="details-item">
               <p>Humidity</p>
               <span>{weather.humidity}%</span>
             </div>
-            <div className="wind">
+            <div className="details-item">
               <p>Wind</p>
               <span>
                 {units.windspeed === "km/h"
@@ -61,7 +59,7 @@ export default function MainDiv({ weather, loading, error, units }) {
                 {units.windspeed}
               </span>
             </div>
-            <div className="precipitation">
+            <div className="details-item">
               <p>Precipitation</p>
               <span>
                 {units.precipitation === "mm"

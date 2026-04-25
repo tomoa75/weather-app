@@ -1,5 +1,18 @@
-* {
+/** {
   outline: 1px solid red !important;
+}*/
+
+:root {
+  --neutral-900: hsl(243, 96%, 9%);
+  --neutral-800: hsl(243, 27%, 20%);
+  --neutral-700: hsl(243, 23%, 24%);
+  --neutral-600: hsl(243, 23%, 30%);
+  --neutral-300: hsl(240, 6%, 70%);
+  --neutral-200: hsl(250, 6%, 84%);
+  --neutral-0: hsl(0, 0%, 100%);
+  --orange-500: hsl(28, 100%, 52%);
+  --blue-500: hsl(233, 67%, 56%);
+  --blue-700: hsl(248, 70%, 36%);
 }
 body {
   background-color: black;
@@ -11,33 +24,74 @@ body {
   padding: 0;
 }
 .App {
+  background-color: var(--neutral-900);
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 70%;
   margin: 0 auto;
 }
+.logo {
+  width: 200px;
+  height: 30px;
+}
+button {
+  border: none;
+  padding: 6px 8px;
+  background-color: var(--neutral-800);
+  color: var(--neutral-200);
+  border-radius: 6px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--neutral-600);
+}
+button img {
+  width: 10px;
+  height: 10px;
+  fill: var(--neutral-200);
+}
+.title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  margin: 20px auto 0 auto;
+  font-size: 28px;
+}
 header {
+  margin: 30px 40px 0 10px;
   display: flex;
   justify-content: space-between;
   position: relative;
-  align-items: center;
+}
+input:focus {
+  outline: none;
 }
 .dropdown-header {
   position: absolute;
-  right: 20px;
+  right: 10%;
   top: 60px;
-  background-color: rgb(68, 67, 67);
+  background-color: var(--neutral-800);
 }
 .searchbox {
   display: flex;
-
+  margin-top: 30px;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
+  font-size: 8px;
 }
-button {
-  background-color: rgb(68, 67, 67);
+.searchbox input {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--neutral-800);
+  color: whitesmoke;
+  width: 32%;
+  cursor: pointer;
+}
+.searchbox button {
+  padding: 8px 10px;
   color: whitesmoke;
   border: none;
+  border-radius: 6px;
+  background-color: var(--blue-700);
 }
 .weathericon {
   width: 100px;
@@ -45,19 +99,19 @@ button {
 }
 .main-container {
   display: flex;
-
+  font-family: "DM Sans", sans-serif;
   max-height: 80vh;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
-
+  justify-content: space-around;
   margin: 0 auto;
 }
 .left-side {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  width: 70%;
+
+  width: 60%;
 }
 .current-weather {
   display: flex;
@@ -72,26 +126,125 @@ button {
   background-image: url("./assets/images/bg-today-large.svg");
   background-size: cover;
   background-position: center;
+  border-radius: 12px;
+}
+.temperature {
+  display: flex;
+  font-size: 48px;
+  font-style: italic;
+  font-weight: bold;
+  align-items: center;
+}
+.details {
+  margin: 20px 0;
+  display: flex;
+
+  justify-content: space-between;
+}
+.details-item {
+  width: 20%;
+  background-color: var(--neutral-700);
+  padding: 8px;
+  border-radius: 10px;
+}
+.details-item p {
+  font-size: 14px;
+  color: var(--neutral-300);
+  margin-top: 0;
+}
+.details-item span {
+  font-size: 18px;
+}
+.hourly-forecast-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding: 6px;
+}
+.hourly-forecast-header select {
+  background-color: var(--neutral-600);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--neutral-200);
+  border: none;
+  padding: 6px 4px;
+  cursor: pointer;
+}
+.hourly-forecast-header option {
+  border-radius: 10px;
 }
 
 .hourly-forecast {
+  background-color: var(--neutral-800);
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  border-radius: 12px;
+  padding: 10px;
+
+  width: 30%;
+}
+.hourly-forecast-list {
   overflow-y: auto;
+}
+/* cijeli scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* pozadina (maknemo) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* sama “crta” */
+::-webkit-scrollbar-thumb {
+  background-color: var(--neutral-600);
+  border-radius: 10px;
+}
+.hourly-forecast-item {
+  display: flex;
+  background-color: var(--neutral-700);
+  border-radius: 6px;
+  margin: 8px;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+  font-size: 12px;
+}
+.hourly-forecast-item .left {
+  display: flex;
+  align-items: center;
 }
 .hourly-forecast-item img {
   width: 30px;
   height: 30px;
 }
+.dailyforecast-title {
+  margin-top: 14px;
+  font-size: 14px;
+}
 .daily-forecast {
   display: flex;
-
-  gap: 20px;
+  gap: 10px;
+  text-align: center;
+  font-size: 10px;
+}
+.daily-forecast-item {
+  background-color: var(--neutral-700);
+  padding: 4px;
+  width: 11%;
+  border-radius: 10px;
 }
 .daily-forecast img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
+}
+.daily-forecast p {
+  margin-top: 0;
+}
+.daily-forecast .minmax {
+  display: flex;
+  justify-content: space-between;
 }
 .details {
   display: flex;
@@ -99,4 +252,15 @@ button {
   justify-content: space-between;
 
   gap: 10px;
+}
+@media (max-width: 780px) {
+  .app {
+    width: 95%;
+  }
+
+  .searchbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

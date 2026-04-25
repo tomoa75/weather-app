@@ -19,29 +19,32 @@ export default function DailyForecast({ daily, units }) {
     };
   });
   return (
-    <div className="daily-forecast">
-      {forecastArray.map((day) => (
-        <div key={day.date} className="daily-forecast-item">
-          <p>
-            {new Date(day.date).toLocaleDateString("en-EN", {
-              weekday: "short",
-            })}
-          </p>
-          <img src={getWeatherIcon(day.weathercode)} alt="Weather icon" />
-          <p>
-            Max:{" "}
-            {units.temperature === "Celsius"
-              ? `${Math.round(day.maxTemp)}°`
-              : `${Math.round((day.maxTemp * 9) / 5 + 32)}°`}
-          </p>
-          <p>
-            Min:{" "}
-            {units.temperature === "Celsius"
-              ? `${Math.round(day.minTemp)}°`
-              : `${Math.round((day.minTemp * 9) / 5 + 32)}°`}
-          </p>
-        </div>
-      ))}
-    </div>
+    <>
+      <p className="dailyforecast-title">Daily Forecast</p>
+      <div className="daily-forecast">
+        {forecastArray.map((day) => (
+          <div key={day.date} className="daily-forecast-item">
+            <p>
+              {new Date(day.date).toLocaleDateString("en-EN", {
+                weekday: "short",
+              })}
+            </p>
+            <img src={getWeatherIcon(day.weathercode)} alt="Weather icon" />
+            <div className="minmax">
+              <p>
+                {units.temperature === "Celsius"
+                  ? `${Math.round(day.maxTemp)}°`
+                  : `${Math.round((day.maxTemp * 9) / 5 + 32)}°`}
+              </p>
+              <p>
+                {units.temperature === "Celsius"
+                  ? `${Math.round(day.minTemp)}°`
+                  : `${Math.round((day.minTemp * 9) / 5 + 32)}°`}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

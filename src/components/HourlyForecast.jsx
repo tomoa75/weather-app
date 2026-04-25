@@ -64,8 +64,15 @@ export default function HourlyForecast({ hourly, units }) {
       <div className="hourly-forecast-list">
         {hourlyData.map((hour) => (
           <div key={hour.time} className="hourly-forecast-item">
-            <p>{hour.time}</p>
-            <img src={getWeatherIcon(hour.code)} alt="Weather icon" />
+            <div className="left">
+              <img src={getWeatherIcon(hour.code)} alt="Weather icon" />
+              <p>
+                {new Date(hour.time).toLocaleTimeString("en-US", {
+                  hour: "numeric",
+                  hour12: true,
+                })}
+              </p>
+            </div>
             <p>
               {units.temperature === "Celsius"
                 ? `${Math.round(hour.temp)}°`

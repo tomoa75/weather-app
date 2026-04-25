@@ -6,11 +6,11 @@ import DropdownHeader from "./DropdownHeader";
 export default function Header({ isOpen, setIsOpen }) {
   return (
     <header>
-      <img src={logo} alt="Logo" />
+      <img src={logo} alt="Logo" className="logo" />
 
       <button onClick={() => setIsOpen(!isOpen)}>
         <img src={iconunits} alt="Units" />
-        Units
+        <span> Units </span>
         <img src={icondropdown} alt="Dropdown" />
       </button>
     </header>

@@ -43,11 +43,7 @@ function App() {
         <Error error={weatherData.error} />
       ) : (
         <>
-          <h6>
-            temp prikaz:{units.temperature},windspeed prikaz:{units.windspeed}
-            ,precipitation prikaz:{units.precipitation}
-          </h6>
-          <h2>How is the sky looking today?</h2>
+          <h1 className="title">How is the sky looking today?</h1>
 
           <InputPlace {...weatherData} />
           <div className="main-container">
@@ -60,13 +56,10 @@ function App() {
                 country={weatherData.country}
               />
 
-              <div className="daily-forecast">
-                <DailyForecast daily={weatherData.daily} units={units} />
-              </div>
+              <DailyForecast daily={weatherData.daily} units={units} />
             </div>
-            <div className="hourly-forecast">
-              <HourlyForecast hourly={weatherData.hourly} units={units} />
-            </div>
+
+            <HourlyForecast hourly={weatherData.hourly} units={units} />
           </div>
         </>
       )}
