@@ -51,7 +51,7 @@ export default function HourlyForecast({ hourly, units }) {
   return (
     <div className="hourly-forecast">
       <div className="hourly-forecast-header">
-        Hourly Forecast
+        <p>Hourly Forecast</p>
         <select value={offset} onChange={handleChange}>
           {weekDays.map((day, i) => (
             <option key={day} value={i}>
@@ -73,7 +73,7 @@ export default function HourlyForecast({ hourly, units }) {
                 })}
               </p>
             </div>
-            <p>
+            <p className="right">
               {units.temperature === "Celsius"
                 ? `${Math.round(hour.temp)}°`
                 : `${Math.round((hour.temp * 9) / 5 + 32)}°`}
