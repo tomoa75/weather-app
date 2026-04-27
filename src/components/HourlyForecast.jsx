@@ -1,17 +1,8 @@
 import { getWeatherIcon } from "../getWeatherIcon";
+import DaySelect from "./DaySelect";
 import { useState } from "react";
 
 export default function HourlyForecast({ hourly, units }) {
-  const weekDays = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
-
   const todayIndex = new Date().getDay() - 1; // 0 = Sunday pa prilagodba da 0 bude Monday, 6 Sunday
   console.log("todayIndex (0=Sun):", todayIndex);
 
@@ -22,26 +13,13 @@ export default function HourlyForecast({ hourly, units }) {
     return <p>Hourly forecast data not available.</p>;
   }
 
-  const handleChange = (e) => {
-    setOffset(Number(e.target.value));
-  };
-
   //  KLJUČ: uvijek od danas + offset
   const coef =
     offset - todayIndex >= 0 ? offset - todayIndex : 7 + (offset - todayIndex);
 
   const start = coef * 24;
   const end = start + 24;
-  console.log(
-    "coef:",
-    coef,
-    "pomak:",
-    weekDays[offset],
-    "start:",
-    start,
-    "end:",
-    end,
-  );
+  console.log("coef:", coef, "pomak:", offset, "start:", start, "end:", end);
   const hourlyData = hourly.time.slice(start, end).map((time, i) => ({
     time,
     temp: hourly.temperature_2m[start + i],
@@ -52,13 +30,7 @@ export default function HourlyForecast({ hourly, units }) {
     <div className="hourly-forecast">
       <div className="hourly-forecast-header">
         <p>Hourly Forecast</p>
-        <select value={offset} onChange={handleChange}>
-          {weekDays.map((day, i) => (
-            <option key={day} value={i}>
-              {day}
-            </option>
-          ))}
-        </select>
+        <DaySelect value={offset} setValue={setOffset} />
       </div>
 
       <div className="hourly-forecast-list">

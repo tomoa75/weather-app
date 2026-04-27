@@ -29,16 +29,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      {isOpen && (
-        <DropdownHeader
-          system={system}
-          setSystem={setSystem}
-          units={units}
-          setUnits={setUnits}
-          UNIT_PRESETS={UNIT_PRESETS}
-        />
-      )}
+      <Header isOpen={isOpen} setIsOpen={setIsOpen}>
+        {isOpen && (
+          <DropdownHeader
+            system={system}
+            setSystem={setSystem}
+            units={units}
+            setUnits={setUnits}
+            UNIT_PRESETS={UNIT_PRESETS}
+          />
+        )}
+      </Header>
       {weatherData.error ? (
         <Error error={weatherData.error} />
       ) : (

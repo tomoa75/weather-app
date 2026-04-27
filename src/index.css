@@ -1,0 +1,79 @@
+:root {
+  --neutral-900: hsl(243, 96%, 9%);
+  --neutral-800: hsl(243, 27%, 20%);
+  --neutral-700: hsl(243, 23%, 24%);
+  --neutral-600: hsl(243, 23%, 30%);
+  --neutral-300: hsl(240, 6%, 70%);
+  --neutral-200: hsl(250, 6%, 84%);
+  --neutral-0: hsl(0, 0%, 100%);
+  --orange-500: hsl(28, 100%, 52%);
+  --blue-500: hsl(233, 67%, 56%);
+  --blue-700: hsl(248, 70%, 36%);
+}
+.radio-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px; /* razmak između */
+  position: relative;
+  padding: 6px;
+}
+
+/* sakrij pravi radio */
+.radio-item input {
+  position: absolute;
+  opacity: 0;
+}
+
+/* custom kvadratić */
+.checkmark {
+  position: absolute;
+  right: 0;
+  display: none;
+}
+
+/* kad je označeno */
+/* oboji cijeli item */
+.radio-item:has(input:checked) {
+  background-color: var(--neutral-700);
+  border-radius: 6px;
+}
+.radio-item input:checked ~ .checkmark {
+  display: inline;
+  padding: 6px;
+}
+.custom-select {
+  position: relative;
+  width: 220px;
+}
+
+.selected {
+  background: var(--neutral-700);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  color: white;
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--neutral-800);
+  border-radius: 10px;
+  border: 1px solid var(--neutral-600);
+  margin-top: 5px;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+  color: white;
+}
+
+.option:hover {
+  background: var(--neutral-600);
+}
