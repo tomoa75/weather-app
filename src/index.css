@@ -48,11 +48,15 @@
 }
 
 .selected {
+  position: absolute;
   background: var(--neutral-700);
   padding: 10px;
   cursor: pointer;
   border-radius: 6px;
-  color: white;
+  color: var(--neutral-0);
+  width: 40%;
+  right: 0;
+  text-align: center;
 }
 
 .options {

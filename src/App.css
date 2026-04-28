@@ -92,8 +92,9 @@ input:focus {
   display: flex;
   margin-top: 30px;
   justify-content: center;
-  gap: 30px;
+  gap: 40px;
   font-size: 8px;
+  position: relative;
 }
 .searchbox input {
   padding: 8px;
@@ -101,15 +102,15 @@ input:focus {
   border: none;
   background-color: var(--neutral-800);
   color: whitesmoke;
-  width: 32%;
+  width: 28%;
   cursor: pointer;
 }
 .searchbox button {
-  padding: 8px 10px;
+  padding: 10px 12px;
   color: whitesmoke;
   border: none;
   border-radius: 6px;
-  background-color: var(--blue-700);
+  background-color: var(--blue-500);
 }
 .weathericon {
   width: 100px;
@@ -187,40 +188,25 @@ input:focus {
 }
 .hourly-forecast-header {
   display: flex;
-  justify-content: space-between;
-  font-size: 18px;
+
+  font-size: 16px;
   padding: 6px;
-}
-.hourly-forecast-header select {
-  background-color: var(--neutral-600);
-  border-radius: 4px;
-  font-size: 10px;
-  color: var(--neutral-200);
-  border: none;
-  padding: 6px 4px;
-  cursor: pointer;
-}
-.hourly-forecast-header option {
-  border-radius: 10px;
 }
 
 .hourly-forecast {
   background-color: var(--neutral-800);
   display: flex;
-  flex: 1;
+
   flex-direction: column;
 
   border-radius: 12px;
   padding: 10px;
 }
-.hourly-forecast p {
-  margin-top: 16px;
-  margin-bottom: 16px;
-}
+
 .hourly-forecast-list {
   overflow-y: auto;
 
-  max-height: 580px;
+  max-height: 550px;
 }
 /* cijeli scrollbar */
 ::-webkit-scrollbar {
@@ -241,7 +227,7 @@ input:focus {
   display: flex;
   background-color: var(--neutral-700);
   border-radius: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   align-items: center;
   justify-content: space-between;
   padding-right: 10px;

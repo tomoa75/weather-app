@@ -1,14 +1,15 @@
 import { useState } from "react";
-import "./index.css";
+import icondropdown from "../assets/images/icon-dropdown.svg";
+import "../index.css";
 
 const days = [
-  "Ponedjeljak",
-  "Utorak",
-  "Srijeda",
-  "Četvrtak",
-  "Petak",
-  "Subota",
-  "Nedjelja",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
 ];
 
 export default function DaySelect({ value, setValue }) {
@@ -19,7 +20,7 @@ export default function DaySelect({ value, setValue }) {
   return (
     <div className="custom-select">
       <div className="selected" onClick={() => setOpen(!open)}>
-        {selectedLabel}
+        {selectedLabel} {"  "} <img src={icondropdown} alt="Dropdown" />
       </div>
 
       {open && (

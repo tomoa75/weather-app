@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import search from "../assets/images/icon-search.svg";
 
 export default function InputPlace({
   fetchCities,
@@ -12,6 +13,11 @@ export default function InputPlace({
   return (
     <>
       <div className="searchbox">
+        <svg
+          style={{ position: "absolute", left: "10px", pointerEvents: "none" }}
+          img
+          src={search}
+        />
         <input
           type="text"
           placeholder="Search for a place..."
