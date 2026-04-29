@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import search from "../assets/images/icon-search.svg";
+import iconLoading from "../assets/images/icon-loading.svg";
 
 export default function InputPlace({
   fetchCities,
   fetchWeather,
   candidates,
   setCandidates,
+  loading,
 }) {
   const [city, setCity] = useState("");
   const [selectedCity, setSelectedCity] = useState(null);
@@ -13,46 +15,45 @@ export default function InputPlace({
   return (
     <>
       <div className="searchbox">
-        <svg
-          style={{ position: "absolute", left: "10px", pointerEvents: "none" }}
-          img
-          src={search}
-        />
-        <input
-          type="text"
-          placeholder="Search for a place..."
-          autoFocus
-          value={city}
-          onChange={(e) => {
-            setCity(e.target.value);
-            fetchCities(e.target.value);
-          }}
-        />
+        <div className="input-wrapper">
+          <img src={search} />
+          <input
+            type="text"
+            placeholder="Search for a place..."
+            autoFocus
+            value={city}
+            onChange={(e) => {
+              setCity(e.target.value);
+              fetchCities(e.target.value);
+            }}
+          />
+          {loading && (
+            <div className="loading">
+              <img src={iconLoading} />
+              <p>Search in progress</p>
+            </div>
+          )}
 
+          {candidates.length > 0 && (
+            <div className="candidates">
+              {candidates.map((c, i) => (
+                <div
+                  className="single-candidate"
+                  key={i}
+                  onClick={() => {
+                    setCity(c.name);
+                    setCandidates([]);
+                    setSelectedCity(c);
+                  }}
+                >
+                  {c.name} ({c.country})
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
         <button onClick={() => fetchWeather(selectedCity)}>Search</button>
       </div>
-      {candidates.length > 0 && (
-        <div style={{ marginTop: "10px" }}>
-          <p>Odaberi grad:</p>
-
-          {candidates.map((c, i) => (
-            <button
-              key={i}
-              onClick={() => {
-                setCity(c.name);
-                setCandidates([]);
-                setSelectedCity(c);
-              }}
-              style={{
-                display: "block",
-                margin: "5px 0",
-              }}
-            >
-              {c.name} ({c.country})
-            </button>
-          ))}
-        </div>
-      )}
     </>
   );
 }

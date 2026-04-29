@@ -1,9 +1,8 @@
 import { getWeatherIcon } from "../getWeatherIcon";
 
-export default function MainDiv({ weather, loading, error, units }) {
+export default function MainDiv({ weather, error, units }) {
   return (
     <div className="current-weather">
-      {loading && <p>Učitavanje...</p>}
       {error && <p>{error}</p>}
 
       {weather && (

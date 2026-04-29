@@ -20,7 +20,10 @@ export default function DaySelect({ value, setValue }) {
   return (
     <div className="custom-select">
       <div className="selected" onClick={() => setOpen(!open)}>
-        {selectedLabel} {"  "} <img src={icondropdown} alt="Dropdown" />
+        <div>
+          {selectedLabel} {"  "}{" "}
+        </div>
+        <img src={icondropdown} alt="Dropdown" />
       </div>
 
       {open && (

@@ -89,21 +89,40 @@ input:focus {
   font-size: 16px;
 }
 .searchbox {
+  margin: 0 auto;
   display: flex;
   margin-top: 30px;
-  justify-content: center;
+  align-items: flex-start;
   gap: 40px;
-  font-size: 8px;
+  font-size: 12px;
   position: relative;
+  width: 40%;
 }
+.input-wrapper {
+  position: relative;
+  flex: 1; /* Uzima sav preostali prostor lijevo od gumba */
+  display: flex;
+  flex-direction: column;
+}
+.searchbox img {
+  position: absolute;
+  left: 15px;
+  top: 13px; /* Centriranje ikone vertikalno */
+  pointer-events: none;
+  width: 16px;
+  z-index: 2;
+}
+
 .searchbox input {
-  padding: 8px;
+  width: 100%; /* Sada ispunjava cijeli input-wrapper */
+  padding: 12px 15px 12px 45px; /* padding-left mora biti dovoljan za ikonu */
   border-radius: 6px;
   border: none;
   background-color: var(--neutral-800);
   color: whitesmoke;
-  width: 28%;
-  cursor: pointer;
+  font-size: 16px;
+  box-sizing: border-box; /* Jako važno! */
+  color: var(--neutral-200);
 }
 .searchbox button {
   padding: 10px 12px;
@@ -111,6 +130,49 @@ input:focus {
   border: none;
   border-radius: 6px;
   background-color: var(--blue-500);
+  font-size: 16px;
+}
+.searchbox button:hover {
+  background-color: var(--blue-700);
+}
+.candidates {
+  top: 50px;
+  background-color: var(--neutral-800);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-600);
+  left: 0;
+  width: 100%;
+}
+.loading {
+  top: 50px;
+  background-color: var(--neutral-800);
+  position: absolute;
+  width: 100%;
+
+  gap: 10px;
+  border-radius: 10px;
+  border: 1px solid var(--neutral-600);
+}
+.loading p {
+  padding-left: 40px;
+  font-size: 12px;
+}
+
+.single-candidate {
+  font-size: 14px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 6px;
+}
+
+.single-candidate:hover {
+  background-color: var(--neutral-600);
+  border-radius: 6px;
 }
 .weathericon {
   width: 100px;
@@ -277,7 +339,7 @@ input:focus {
 }
 
 @media (max-width: 780px) {
-  .app {
+  .App {
     width: 95%;
   }
 
@@ -285,5 +347,27 @@ input:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+  }
+  .input-wrapper,
+  .searchbox button {
+    width: 95%;
+  }
+  .main-container {
+    flex-direction: column;
+    padding: 8px;
+  }
+  .details {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .details-item {
+    width: 38%;
+  }
+  .daily-forecast {
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
   }
 }
