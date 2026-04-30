@@ -78,6 +78,7 @@ input:focus {
   padding: 8px;
   border-radius: 10px;
   border: 1px solid var(--neutral-600);
+  z-index: 10;
 }
 .dropdown-header p {
   color: var(--neutral-200);
@@ -369,5 +370,17 @@ input:focus {
     grid-template-columns: repeat(3, 1fr);
 
     gap: 10px;
+  }
+  .dropdown-header {
+    width: 95%;
+    right: 0;
+
+    margin-left: 10px;
+  }
+  .center-view {
+    flex-direction: column;
+    text-align: center;
+
+    background-image: url("./assets/images/bg-today-small.svg");
   }
 }
