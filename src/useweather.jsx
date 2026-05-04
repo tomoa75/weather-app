@@ -26,7 +26,7 @@ export function useWeather() {
         setError("");
 
         // 👇 simulacija loadinga
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
 
         const geoRes = await fetch(
           `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(

@@ -37,12 +37,12 @@ export default function DropdownHeader({
             }))
           }
         />
-        <span class="checkmark">
+        <span className="checkmark">
           <img src={checkMark}></img>
         </span>
       </label>
       <label className="radio-item">
-        Fahrenheit(°F)<span class="checkmark"></span>
+        Fahrenheit(°F)<span className="checkmark"></span>
         <input
           type="radio"
           name="temperature"
@@ -54,13 +54,13 @@ export default function DropdownHeader({
             }))
           }
         />
-        <span class="checkmark">
+        <span className="checkmark">
           <img src={checkMark}></img>
         </span>
       </label>
 
       <p>Wind Speed</p>
-      <span class="checkmark"></span>
+      <span className="checkmark"></span>
       <label className="radio-item">
         km/h
         <input
@@ -74,12 +74,12 @@ export default function DropdownHeader({
             }))
           }
         />
-        <span class="checkmark">
+        <span className="checkmark">
           <img src={checkMark}></img>
         </span>
       </label>
       <label className="radio-item">
-        mph<span class="checkmark"></span>
+        mph<span className="checkmark"></span>
         <input
           type="radio"
           name="windspeed"
@@ -91,14 +91,14 @@ export default function DropdownHeader({
             }))
           }
         />
-        <span class="checkmark">
+        <span className="checkmark">
           <img src={checkMark}></img>
         </span>
       </label>
 
       <p>Precipitation</p>
       <label className="radio-item">
-        mm<span class="checkmark"></span>
+        mm<span className="checkmark"></span>
         <input
           type="radio"
           name="precipitation"
@@ -110,12 +110,12 @@ export default function DropdownHeader({
             }))
           }
         />
-        <span class="checkmark">
+        <span className="checkmark">
           <img src={checkMark}></img>
         </span>
       </label>
       <label className="radio-item">
-        inches<span class="checkmark"></span>
+        inches<span className="checkmark"></span>
         <input
           type="radio"
           name="precipitation"
@@ -127,7 +127,7 @@ export default function DropdownHeader({
             }))
           }
         />
-        <span class="checkmark">
+        <span className="checkmark">
           <img src={checkMark}></img>
         </span>
       </label>
